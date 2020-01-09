@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SmartBook.Models.Review>
+
+@{
+    ViewBag.Title = "Forum Parent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Forum</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewId })
+        </td>
+    </tr>
+}
+
+</table>

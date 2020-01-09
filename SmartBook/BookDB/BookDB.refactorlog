@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="9917ef4c-53a9-4f53-a12c-6b6f19b29aa9" ChangeDateTime="01/05/2020 14:49:41">
+    <Property Name="ElementName" Value="[dbo].[Book].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Book]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BookId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eed16620-2c31-4216-8e56-8f091596fef8" ChangeDateTime="01/05/2020 15:15:02">
+    <Property Name="ElementName" Value="[dbo].[Picture].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Picture]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PictureId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="30029b51-79d5-4af2-bea8-3d2a3088e73b" ChangeDateTime="01/05/2020 15:19:22">
+    <Property Name="ElementName" Value="[dbo].[Review].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Review]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Review Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6a5bedee-5207-4480-aa15-7f0b12f850b8" ChangeDateTime="01/05/2020 15:19:28">
+    <Property Name="ElementName" Value="[dbo].[Review].[Review Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Review]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ReviewId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a33adfe2-ff19-4757-858b-7f5ca978fd8c" ChangeDateTime="01/05/2020 15:24:28">
+    <Property Name="ElementName" Value="[dbo].[Writer].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Writer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WriterId" />
+  </Operation>
+</Operations>

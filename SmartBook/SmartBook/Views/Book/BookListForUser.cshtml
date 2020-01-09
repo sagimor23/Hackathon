@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SmartBook.Models.Book>
+
+@{
+    ViewBag.Title = "Book List For User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>רשימת ספרים</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            שם הספר
+        </th>
+        <th>
+            שנת הוצאה לאור
+        </th>
+        <th>
+            תקציר
+        </th>
+        <th>
+            סופר
+        </th>
+        <th>
+            תמונה
+        </th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfPublish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Writer.WriterName)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.Picture.PictureName)" alt="Steak" style="width:40%">
+
+        </td>
+        <td>
+            @Html.ActionLink("פרטים", "Details", new { id=item.BookId }) 
+        </td>
+    </tr>
+}
+
+</table>
