@@ -32,7 +32,13 @@ namespace SmartBook.Models
         [Required]
         public string WriterName { get; set; }
 
+        [Display(Name = "Number of pages")]
+        [Required]
+        public int Number_Of_Pages { get; set; }
+
+
         [Display(Name = "Book url")]
+        [Required]
         public string BookUrl { get; set; }
 
         public virtual Picture Picture { get; set; }
