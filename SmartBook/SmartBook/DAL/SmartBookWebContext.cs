@@ -15,12 +15,11 @@ namespace SmartBook.DAL
         
 
      
-            public SmartBookWebContext() : base("SmartBookWebContext") { }
+            public SmartBookWebContext() : base("SmartBookContext") { }
             public DbSet<Book> Book { get; set; }
             public DbSet<Review> Review { get; set; }
-            public DbSet<Writer> Writer { get; set; }
             public DbSet<Picture> Picture { get; set; }
-            public object UserBookVisits { get; internal set; }
+            public DbSet<UserBookVisits> UserBookVisits { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {

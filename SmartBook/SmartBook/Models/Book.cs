@@ -30,14 +30,13 @@ namespace SmartBook.Models
         public int PictureId { get; set; }
 
         [Required]
-        public int WriterId { get; set; }
+        public string WriterName { get; set; }
 
-        //[Display(Name = "Book url")]
-        //public string Bookurl { get; set; }
+        [Display(Name = "Book url")]
+        public string BookUrl { get; set; }
 
         public virtual Picture Picture { get; set; }
         public virtual ICollection<Review> Review { get; set; }
-        public virtual Writer Writer { get; set; }
        
     }
 }

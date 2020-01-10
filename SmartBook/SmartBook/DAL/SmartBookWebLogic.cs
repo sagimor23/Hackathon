@@ -39,27 +39,7 @@ namespace SmartBook.DAL
             db.Book.Remove(m);
         }
 
-        public IQueryable<Writer> GetAllWriters()
-        {
-            return db.Writer;
-        }
-        public Writer GetWriterById(int WriterId)
-        {
-            return db.Writer.Where(m => m.WriterId == WriterId).FirstOrDefault();
-        }
-
-        public void DeleteWriter(Writer e)
-        {
-            db.Writer.Remove(e);
-        }
-        public void AddWriter(Writer e)
-        {
-            db.Writer.Add(e);
-        }
-        public void UpdateWriter(Writer e)
-        {
-            db.Entry(e).State = EntityState.Modified;
-        }
+       
         public double GetBookRating(int id)
         {
             double reviewSum = db.Review.Where(a => a.BookId == id).Sum(a => a.ReviewRating);

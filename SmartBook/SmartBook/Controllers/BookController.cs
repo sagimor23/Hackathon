@@ -1,4 +1,6 @@
-﻿using SmartBook.DAL;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SmartBook.DAL;
 using SmartBook.Models;
 using SmartBook.ViewModels;
 using System;
@@ -18,8 +20,13 @@ namespace Website.Models
 
         public ActionResult CreateBook(Book cust)
         {
+            if (!isAdminUser())
+            {
+                return RedirectToAction("Index", "Main");
+            }
+               
 
-            return View(new Book());
+            return View();
 
         }
 
@@ -33,12 +40,13 @@ namespace Website.Models
             {
                 dal.AddBook(cust);
                 dal.SaveChanges();
-                return View("BooksList", dal.GetAllBooks().ToList());
+                return RedirectToAction("BooksList");
+                ;
 
             }
             else
             {
-                return View("CreateBook");
+                return View();
 
             }
         }
@@ -51,6 +59,10 @@ namespace Website.Models
 
         public ActionResult BooksList()
         {
+            if (isAdminUser())
+            {
+                ViewBag.isAdmin = "true";
+            }
             return View(dal.GetAllBooks().ToList());
         }
 
@@ -92,15 +104,12 @@ namespace Website.Models
             }
             else
             {
-                return View("CreateBook");
+                return View();
 
             }
         }
 
-        public ActionResult BookListForUser()
-        {
-            return View(dal.GetAllBooks().ToList());
-        }
+
         
 
         //add new comment
@@ -125,7 +134,7 @@ namespace Website.Models
             }
             else
             {
-                return View("CreataComment");
+                return View();
 
             }
         }
@@ -135,6 +144,26 @@ namespace Website.Models
 
                 return View();
             
+        }
+
+        public Boolean isAdminUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Admin")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
     }

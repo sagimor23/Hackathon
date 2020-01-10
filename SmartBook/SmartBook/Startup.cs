@@ -54,10 +54,10 @@ namespace SmartBook
             // creating Creating Manager role    
 
             // creating Creating Employee role    
-            if (!roleManager.RoleExists("Customer"))
+            if (!roleManager.RoleExists("Kid"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Customer";
+                role.Name = "Kid";
                 roleManager.Create(role);
                 var user = new ApplicationUser();
                 user.UserName = "Faruch";
@@ -70,52 +70,32 @@ namespace SmartBook
                 //Add default User to Role Admin   
                 if (chkUser.Succeeded)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "Customer");
+                    var result1 = UserManager.AddToRole(user.Id, "Kid");
                 }
-
-                user = new ApplicationUser();
+            }
+            if (!roleManager.RoleExists("Parent"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Parent";
+                roleManager.Create(role);
+                var user = new ApplicationUser();
                 user.UserName = "Ran";
                 user.Email = "Ran@gmail.com";
 
-                userPWD = "Ran1234!";
+                string userPWD = "Ran1234!";
 
-                chkUser = UserManager.Create(user, userPWD);
-
-                //Add default User to Role Admin   
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Customer");
-                }
-
-                user = new ApplicationUser();
-                user.UserName = "Shunit";
-                user.Email = "Shunit@gmail.com";
-
-                userPWD = "Shunit1234!";
-
-                chkUser = UserManager.Create(user, userPWD);
+                var chkUser = UserManager.Create(user, userPWD);
 
                 //Add default User to Role Admin   
                 if (chkUser.Succeeded)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "Customer");
+                    var result1 = UserManager.AddToRole(user.Id, "Parent");
                 }
 
-                user = new ApplicationUser();
-                user.UserName = "Gal";
-                user.Email = "Gal@gmail.com";
-
-                userPWD = "Gal1234!";
-
-                chkUser = UserManager.Create(user, userPWD);
-
-                //Add default User to Role Admin   
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Customer");
-                }
+               
 
             }
+
         }
     }
 }

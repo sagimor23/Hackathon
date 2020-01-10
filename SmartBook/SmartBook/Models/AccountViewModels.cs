@@ -49,8 +49,7 @@ namespace SmartBook.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "User name")]
         public string Email { get; set; }
 
         [Required]

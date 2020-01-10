@@ -23,6 +23,17 @@
             }
             ]
         </dd>
-       
+        @if (ViewBag.isAdmin == "true")
+        {
+            <h4>Welcome Admin. You can manage the site from here:</h4>
+            <button onclick="location.href='@Url.Action("ManageSite", "Site")';return false;">Manage Site</button>
+        }
+        @if (ViewBag.isParent == "true")
+        {
+            <h4>Welcome Parent. You can visit the parent forum here:</h4>
+            <button onclick="location.href='@Url.Action("Forum", "Book")';return false;">Forum</button>
+        }
+
+
     </dl>
 </div>
