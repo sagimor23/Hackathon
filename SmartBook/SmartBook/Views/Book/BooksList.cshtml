@@ -53,19 +53,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.WriterName)
             </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.BookId })
+            </td>
+
             @if (ViewBag.isAdmin == "true")
             {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.BookId })
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.BookId })
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
-                </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookId })
+             </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+             </td>
             }
-            </tr>
+        </tr>
         }
 
     </table>

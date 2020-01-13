@@ -19,8 +19,22 @@
 <img src="@Model.Picture.PictureName " alt="Steak" style="width:50%">
 <br />
 
+<br />
+<br />
+<br />
+<br />
+<br />
 
-@Html.ActionLink("הוסף תגובה חדשה", "CreataComment",Model)
+@Model.BookUrl
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+@Html.ActionLink("הוסף תגובה חדשה", "CreataComment", Model)
 
 <table class="table">
     <tr>
@@ -40,26 +54,25 @@
         </th>
     </tr>
 
+
     @foreach (var item in Model.Review)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewRating)
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewRating)
+            </td>
+        </tr>
     }
 
 
 </table>
 
-
-<iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=fc5sv53ko" width="100%" height="480" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>

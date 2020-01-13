@@ -24,7 +24,10 @@ namespace SmartBook.Controllers
             {
                 ViewBag.isAdmin = "true";
             }
-
+            if (isParentUser())
+            {
+                ViewBag.isParent = "true";
+            }
 
             var comments = dbLogic.GetAllComments().OrderBy(a => a.CommentId);
 
@@ -52,10 +55,7 @@ namespace SmartBook.Controllers
         // GET: Comment/Create
         public ActionResult Create()
         {
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Main");
-            }
+
             return View();
         }
 
@@ -67,10 +67,7 @@ namespace SmartBook.Controllers
         public ActionResult Create([Bind(Include = "CommentId,UserName,CommentText,CommentData")] Comment comment)
         {
             comment.CommentDate = DateTime.Now;
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Main");
-            }
+
             if (ModelState.IsValid)
             {
                
@@ -86,10 +83,7 @@ namespace SmartBook.Controllers
         // GET: Comment/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Main");
-            }
+
 
             if (id == null)
             {
@@ -122,10 +116,7 @@ namespace SmartBook.Controllers
         // GET: Picture/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Movie");
-            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -145,10 +136,7 @@ namespace SmartBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CommentId,UserName,CommentText,CommentData")] Comment comment)
         {
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Main");
-            }
+
             if (ModelState.IsValid)
             {
                 comment.CommentDate = DateTime.Now;
@@ -185,5 +173,26 @@ namespace SmartBook.Controllers
             }
             return false;
         }
+
+        public Boolean isParentUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Parent")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
     }
 }
