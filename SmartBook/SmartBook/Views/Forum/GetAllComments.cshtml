@@ -36,7 +36,8 @@
             @Html.DisplayFor(modelItem => item.CommentDate)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new {  id=item.CommentId  })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CommentId })
+            @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })
         </td>
     </tr>
 }

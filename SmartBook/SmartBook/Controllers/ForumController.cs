@@ -151,10 +151,10 @@ namespace SmartBook.Controllers
             }
             if (ModelState.IsValid)
             {
-
+                comment.CommentDate = DateTime.Now;
                 dbLogic.UpdateComment(comment);
                 dbLogic.SaveChanges();
-                return RedirectToAction("GetAllPictures");
+                return RedirectToAction("GetAllComments");
             }
             return View(comment);
         }

@@ -69,7 +69,7 @@ namespace SmartBook.Controllers
             return View(iUser);
         }
 
-        // POST: Movie/Delete/5
+        // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
@@ -109,7 +109,7 @@ namespace SmartBook.Controllers
             return View(urvm);
         }
 
-        // POST: Actor/Edit/5
+        // POST: User/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
