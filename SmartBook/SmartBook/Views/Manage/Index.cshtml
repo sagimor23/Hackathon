@@ -31,7 +31,7 @@
         @if (ViewBag.isParent == "true")
         {
             <h4>Welcome Parent. You can visit the parent forum here:</h4>
-            <button onclick="location.href='@Url.Action("Forum", "Book")';return false;">Forum</button>
+            <button onclick="location.href='@Url.Action("GetAllComments", "Forum")';return false;">Forum</button>
         }
 
 
