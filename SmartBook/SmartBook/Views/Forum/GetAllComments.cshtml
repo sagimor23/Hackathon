@@ -6,7 +6,7 @@
 }
 
 <h2>Forum</h2>
-@if (ViewBag.isAdmin == "true" && ViewBag.isParent == "true")
+@if (ViewBag.isAdmin == "true" || ViewBag.isParent == "true")
 {
     <p>
         @Html.ActionLink("הוסף תגובה", "Create")
