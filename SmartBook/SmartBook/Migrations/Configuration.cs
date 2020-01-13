@@ -8,6 +8,7 @@
     using System.Data.Entity.Validation;
     using System.Linq;
     using System.Text;
+    using static System.Net.WebRequestMethods;
 
     internal sealed class Configuration : DbMigrationsConfiguration<SmartBook.DAL.SmartBookWebContext>
     {
@@ -63,7 +64,7 @@
 
             context.Picture.AddRange(pictures);
             List<Book> movies = new List<Book>();
-            Book m1 = new Book {PictureId = 1, BookId = 2,BookUrl="https://cdn.flipsnack.com/widget/v2/widget.html?hash=ftk8wnkx2",Number_Of_Pages=10, BookName = "Ali Baba", WriterName = "BLA", YearOfPublish = 2018, Summary = "Ali Baba revolves around an opportunistic person seeking to achieve his interests even at the expense of others, including those who are closest to his heart." };
+            Book m1 = new Book {PictureId = 1, BookId = 99,BookUrl= "<iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=ftk8wnkx2" width="100%" height="480" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>",Number_Of_Pages=10, BookName = "Ali Baba", WriterName = "BLA", YearOfPublish = 2018, Summary = "Ali Baba revolves around an opportunistic person seeking to achieve his interests even at the expense of others, including those who are closest to his heart." };
             movies.Add(m1);
             Book m2 = new Book { PictureId = 2, BookId = 3, BookUrl = "https://cdn.flipsnack.com/widget/v2/widget.html?hash=ftk8wnkx2", Number_Of_Pages = 10, BookName = "Ali Baba", WriterName = "BLA", YearOfPublish = 2018, Summary = "Ali Baba revolves around an opportunistic person seeking to achieve his interests even at the expense of others, including those who are closest to his heart." };
             movies.Add(m2);
