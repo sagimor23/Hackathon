@@ -85,7 +85,7 @@ namespace SmartBook.Controllers
         {
             if (!isAdminUser())
             {
-                return RedirectToAction("Index", "Movie");
+                return RedirectToAction("Index", "Book");
             }
             if (id == null)
             {

@@ -194,6 +194,10 @@
     <Compile Include="Migrations\202001101103498_cancelWriter.designer.cs">
       <DependentUpon>202001101103498_cancelWriter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001131700262_newmig.cs" />
+    <Compile Include="Migrations\202001131700262_newmig.designer.cs">
+      <DependentUpon>202001131700262_newmig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\UserBookVisits.cs" />
@@ -341,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001101103498_cancelWriter.resx">
       <DependentUpon>202001101103498_cancelWriter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001131700262_newmig.resx">
+      <DependentUpon>202001131700262_newmig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
