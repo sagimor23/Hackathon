@@ -1,25 +1,24 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SmartBook.DAL;
+using SmartBook.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using SmartBook.DAL;
-using SmartBook.Models;
-
 namespace SmartBook.Controllers
 {
-    public class PictureController : Controller
+    public class ForumController : Controller
     {
         private SmartBookWebLogic dbLogic = new SmartBookWebLogic();
+        private ApplicationDbLogic applicationContext = new ApplicationDbLogic();
 
-        // GET: Picture
-        public ActionResult GetAllPictures()
+
+        // GET: Comment
+        public ActionResult GetAllComments()
         {
             if (isAdminUser())
             {
@@ -27,29 +26,30 @@ namespace SmartBook.Controllers
             }
 
 
-            var picture = dbLogic.GetAllPictures().OrderBy(a => a.PictureId);
+            var comments = dbLogic.GetAllComments().OrderBy(a => a.CommentId);
 
 
 
-            return View(picture);
+            return View(comments);
         }
 
-        // GET: Picture/Details/5
-        public ActionResult GetPictureById(int? id)
+        // GET: Comment/Details/id
+        public ActionResult GetCommentById(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Picture picture = dbLogic.GetPictureById((int)id);
-            if (picture == null)
+            Comment Comment = dbLogic.GetCommentById((int)id);
+            if (Comment == null)
             {
                 return HttpNotFound();
             }
-            return View(picture);
+            return View(Comment);
         }
 
-        // GET: Picture/Create
+
+        // GET: Comment/Create
         public ActionResult Create()
         {
             if (!isAdminUser())
@@ -59,25 +59,64 @@ namespace SmartBook.Controllers
             return View();
         }
 
-        // POST: Picture/Create
+        // POST: Comment/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PictureId,PictureName")] Picture picture)
+        public ActionResult Create([Bind(Include = "CommentId,UserName,CommentText,CommentData")] Comment comment)
         {
+            comment.CommentDate = DateTime.Now;
             if (!isAdminUser())
             {
                 return RedirectToAction("Index", "Main");
             }
             if (ModelState.IsValid)
             {
-                dbLogic.AddPicture(picture);
+               
+                dbLogic.AddComment(comment);
                 dbLogic.SaveChanges();
-                return RedirectToAction("GetAllPictures");
+                return RedirectToAction("GetAllComments");
             }
 
-            return View(picture);
+            return View(comment);
+        }
+
+
+        // GET: Comment/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (!isAdminUser())
+            {
+                return RedirectToAction("Index", "Main");
+            }
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = dbLogic.GetCommentById((int)id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+
+        // POST: Comment/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            if (!isAdminUser())
+            {
+                return RedirectToAction("Index", "Main");
+            }
+            Comment comment = dbLogic.GetCommentById(id);
+            dbLogic.DeleteComment(comment);
+            dbLogic.SaveChanges();
+            return RedirectToAction("GetAllComments");
         }
 
         // GET: Picture/Edit/5
@@ -91,12 +130,12 @@ namespace SmartBook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Picture picture = dbLogic.GetPictureById((int)id);
-            if (picture == null)
+            Comment comment = dbLogic.GetCommentById((int)id);
+            if (comment == null)
             {
                 return HttpNotFound();
             }
-            return View(picture);
+            return View(comment);
         }
 
         // POST: Picture/Edit/5
@@ -104,7 +143,7 @@ namespace SmartBook.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PictureId,PictureName")] Picture picture)
+        public ActionResult Edit([Bind(Include = "CommentId,UserName,CommentText,CommentData")] Comment comment)
         {
             if (!isAdminUser())
             {
@@ -113,52 +152,20 @@ namespace SmartBook.Controllers
             if (ModelState.IsValid)
             {
 
-                dbLogic.UpdatePicture(picture);
+                dbLogic.UpdateComment(comment);
                 dbLogic.SaveChanges();
                 return RedirectToAction("GetAllPictures");
             }
-            return View(picture);
+            return View(comment);
         }
 
-        // GET: Picture/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Main");
-            }
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Picture picture = dbLogic.GetPictureById((int)id);
-            if (picture == null)
-            {
-                return HttpNotFound();
-            }
-            return View(picture);
-        }
-
-        // POST: Picture/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            if (!isAdminUser())
-            {
-                return RedirectToAction("Index", "Main");
-            }
-            Picture picture = dbLogic.GetPictureById(id);
-            dbLogic.DeletePicture(picture);
-            dbLogic.SaveChanges();
-            return RedirectToAction("GetAllPictures");
-        }
 
         protected override void Dispose(bool disposing)
         {
             dbLogic.Dispose(disposing);
             base.Dispose(disposing);
         }
+
         public Boolean isAdminUser()
         {
             if (User.Identity.IsAuthenticated)

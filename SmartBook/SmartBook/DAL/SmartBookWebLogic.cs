@@ -95,6 +95,33 @@ namespace SmartBook.DAL
             db.Entry(e).State = EntityState.Modified;
         }
 
+        public Comment GetCommentById(int CommentId)
+        {
+            return db.Forum.Where(m => m.CommentId == CommentId).FirstOrDefault();
+
+        }
+
+        public IQueryable<Comment> GetAllComments()
+        {
+            return db.Forum;
+
+        }
+
+        public void AddComment(Comment r)
+        {
+            db.Forum.Add(r);
+        }
+
+        public void DeleteComment(Comment r)
+        {
+            db.Forum.Remove(r);
+        }
+
+        public void UpdateComment(Comment e)
+        {
+            db.Entry(e).State = EntityState.Modified;
+        }
+
         public List<ReviewTracker> GetReviewsCountByMonthStatistic()
         {
             List<ReviewTracker> list = db.Review.GroupBy(r => new { r.ReviewDate.Year, r.ReviewDate.Month })

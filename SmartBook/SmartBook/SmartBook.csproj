@@ -175,6 +175,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BookController.cs" />
@@ -194,6 +195,7 @@
       <DependentUpon>202001101103498_cancelWriter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\UserBookVisits.cs" />
     <Compile Include="Models\Picture.cs" />
     <Compile Include="Controllers\UnitTestsController.cs" />
@@ -281,7 +283,6 @@
     <Content Include="Views\Book\BooksList.cshtml" />
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Book\CreataComment.cshtml" />
-    <Content Include="Views\Book\Forum.cshtml" />
     <Content Include="Views\Site\ManageSite.cshtml" />
     <Content Include="Views\Picture\Create.cshtml" />
     <Content Include="Views\Picture\Delete.cshtml" />
@@ -296,6 +297,9 @@
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\GetAllUsers.cshtml" />
+    <Content Include="Views\Forum\GetAllComments.cshtml" />
+    <Content Include="Views\Forum\Create.cshtml" />
+    <Content Include="Views\Forum\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

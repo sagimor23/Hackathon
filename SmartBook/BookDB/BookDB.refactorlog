@@ -49,4 +49,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="WriterName" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="35f6e270-d26b-4fd7-b1ef-778bfb497730" ChangeDateTime="01/13/2020 11:58:56">
+    <Property Name="ElementName" Value="[dbo].[Forum].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forum]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CommentId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8a498adc-8f5d-45f3-881c-b1f1ab855ca7" ChangeDateTime="01/13/2020 12:03:18">
+    <Property Name="ElementName" Value="[dbo].[Forum].[ReviewText]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forum]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CommentText" />
+  </Operation>
 </Operations>

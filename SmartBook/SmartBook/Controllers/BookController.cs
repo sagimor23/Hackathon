@@ -30,14 +30,17 @@ namespace Website.Models
 
         }
 
-        [HttpPost]
         // GET:add Book
-
+        [HttpPost]
         public ActionResult Add_Book(Book cust)
         {
             
             if (ModelState.IsValid)
             {
+                if (isAdminUser())
+                {
+                    ViewBag.isAdmin = "true";
+                }
                 dal.AddBook(cust);
                 dal.SaveChanges();
                 return RedirectToAction("BooksList");
@@ -68,6 +71,10 @@ namespace Website.Models
 
         public ActionResult Delete(int id)
         {
+            if (isAdminUser())
+            {
+                ViewBag.isAdmin = "true";
+            }
             dal.DeleteBook(dal.GetBookById(id));
             dal.SaveChanges();
 
@@ -79,6 +86,10 @@ namespace Website.Models
         {
             if (ModelState.IsValid)
             {
+                if (isAdminUser())
+                {
+                    ViewBag.isAdmin = "true";
+                }
                 dal.UpdateBook(dal.GetBookById(id));
                 dal.SaveChanges();
                 return View("BooksList", dal.GetAllBooks().ToList());
@@ -97,6 +108,10 @@ namespace Website.Models
 
             if (ModelState.IsValid)
             {
+                if (isAdminUser())
+                {
+                    ViewBag.isAdmin = "true";
+                }
                 dal.UpdateBook(dal.GetBookById(id));
                 dal.SaveChanges();
                 return View("BooksList", dal.GetAllBooks().ToList());
@@ -119,14 +134,18 @@ namespace Website.Models
             commn.Book = cust;
             commn.ReviewDate = DateTime.Now;
 
-            //cust.BookId = dal.GetBookById(id);
             return View(commn);
         }
 
+        [HttpPost]
         public ActionResult Add_Comment(Review commn)
         {
             if (ModelState.IsValid)
             {
+                if (isAdminUser())
+                {
+                    ViewBag.isAdmin = "true";
+                }
                 dal.AddReview(commn);
                 dal.SaveChanges();
                 return View("Details", dal.GetBookById(commn.BookId));
@@ -139,12 +158,7 @@ namespace Website.Models
             }
         }
 
-        public ActionResult Forum(Review commn)
-        {
 
-                return View();
-            
-        }
 
         public Boolean isAdminUser()
         {

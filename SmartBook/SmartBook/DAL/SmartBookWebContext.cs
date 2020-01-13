@@ -18,6 +18,7 @@ namespace SmartBook.DAL
             public SmartBookWebContext() : base("SmartBookContext") { }
             public DbSet<Book> Book { get; set; }
             public DbSet<Review> Review { get; set; }
+            public DbSet<Comment> Forum { get; set; }
             public DbSet<Picture> Picture { get; set; }
             public DbSet<UserBookVisits> UserBookVisits { get; set; }
 
