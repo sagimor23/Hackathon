@@ -132,7 +132,6 @@ namespace Website.Models
         {
             commn.BookId = cust.BookId;
             commn.Book = cust;
-            commn.ReviewDate = DateTime.Now;
 
             return View(commn);
         }
@@ -140,6 +139,8 @@ namespace Website.Models
         [HttpPost]
         public ActionResult Add_Comment(Review commn)
         {
+            commn.ReviewDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 if (isAdminUser())
