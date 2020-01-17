@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.PictureId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PictureName)
+                <img src="@item.PictureName " alt="Steak" style="width:50%">
             </td>
             @if (ViewBag.isAdmin == "true")
             {

@@ -25,6 +25,8 @@ namespace SmartBook.Models
         {
         }
 
+        public object Picture { get; internal set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
