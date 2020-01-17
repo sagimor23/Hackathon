@@ -11,6 +11,6 @@ namespace SmartBook.Models
         public int PictureId { get; set; }
         [Required]
         public string PictureName { get; set; }
-
+      
     }
 }

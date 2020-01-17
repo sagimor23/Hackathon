@@ -36,7 +36,7 @@
             movies.Add(m2);
             Book m3 = new Book { PictureId = 3, BookId = 3, BookUrl = "https://cdn.flipsnack.com/widget/v2/widget.html?hash=fhm0oimcb", Number_Of_Pages = 10, BookName = "הקטר הקטן", WriterName = "ג.ציפורוב", YearOfPublish = 2018, Summary = "סיפור זה עוסק בחייו של קטר שהיה קצת שונה מכל השאר, הוא תמיד היה מאחר עד שהחליט להתבגר." };
             movies.Add(m3);
-            Book m4 = new Book { PictureId = 4, BookId = 5, BookUrl = "https://cdn.flipsnack.com/widget/v2/widget.html?hash=ftnsgmjh6", Number_Of_Pages = 10, BookName = "הקטר הקטן", WriterName = "ג.ציפורוב", YearOfPublish = 2018, Summary = "עלילות החזיר והגמל , לכל אחד יש יתרון משלו , הצטרפו ללמידה מעניינת בשפה האנגלית של חברים אלו." };
+            Book m4 = new Book { PictureId = 4, BookId = 7, BookUrl = "https://cdn.flipsnack.com/widget/v2/widget.html?hash=ftnsgmjh6", Number_Of_Pages = 10, BookName = "הקטר הקטן", WriterName = "ג.ציפורוב", YearOfPublish = 2018, Summary = "עלילות החזיר והגמל , לכל אחד יש יתרון משלו , הצטרפו ללמידה מעניינת בשפה האנגלית של חברים אלו." };
             movies.Add(m4);
             context.Book.AddRange(movies);
 
