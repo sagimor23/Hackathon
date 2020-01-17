@@ -51,25 +51,35 @@
         <th>
             דירוג
         </th>
+        <th>
+
+        </th>
     </tr>
 
 
     @foreach (var item in Model.Review)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewRating)
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewRating)
+        </td>
+        @if (ViewBag.isAdmin == "true")
+        {
+        <td>
+            @Html.ActionLink("Delete", "DeleteComment", new { id = item.ReviewId })
+
+        </td>
+        }
+    </tr>
     }
 
 

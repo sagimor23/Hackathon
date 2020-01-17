@@ -198,17 +198,9 @@
     <Compile Include="DAL\ApplicationDbLogic.cs" />
     <Compile Include="DAL\SmartBookWebContext.cs" />
     <Compile Include="DAL\SmartBookWebLogic.cs" />
-    <Compile Include="Migrations\202001091800536_someUpdates.cs" />
-    <Compile Include="Migrations\202001091800536_someUpdates.designer.cs">
-      <DependentUpon>202001091800536_someUpdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001101103498_cancelWriter.cs" />
-    <Compile Include="Migrations\202001101103498_cancelWriter.designer.cs">
-      <DependentUpon>202001101103498_cancelWriter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001131700262_newmig.cs" />
-    <Compile Include="Migrations\202001131700262_newmig.designer.cs">
-      <DependentUpon>202001131700262_newmig.cs</DependentUpon>
+    <Compile Include="Migrations\202001142010156_InitialCreate.cs" />
+    <Compile Include="Migrations\202001142010156_InitialCreate.designer.cs">
+      <DependentUpon>202001142010156_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Forum.cs" />
@@ -305,7 +297,6 @@
     <Content Include="Views\Picture\Details.cshtml" />
     <Content Include="Views\Picture\Edit.cshtml" />
     <Content Include="Views\Picture\GetAllPictures.cshtml" />
-    <Content Include="Views\Picture\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
@@ -317,6 +308,7 @@
     <Content Include="Views\Forum\Create.cshtml" />
     <Content Include="Views\Forum\Delete.cshtml" />
     <Content Include="Views\Forum\Edit.cshtml" />
+    <Content Include="Views\Book\DeleteComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -352,14 +344,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001091800536_someUpdates.resx">
-      <DependentUpon>202001091800536_someUpdates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001101103498_cancelWriter.resx">
-      <DependentUpon>202001101103498_cancelWriter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001131700262_newmig.resx">
-      <DependentUpon>202001131700262_newmig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001142010156_InitialCreate.resx">
+      <DependentUpon>202001142010156_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -376,7 +362,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59889</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -57,6 +57,10 @@ namespace Website.Models
 
         public ActionResult Details(int id)
         {
+            if (isAdminUser())
+            {
+                ViewBag.isAdmin = "true";
+            }
             return View("Details", dal.GetBookById(id));
         }
 
@@ -67,6 +71,42 @@ namespace Website.Models
                 ViewBag.isAdmin = "true";
             }
             return View(dal.GetAllBooks().ToList());
+        }
+
+
+        // GET: Book/DeleteComment/5
+        public ActionResult DeleteComment(int? id)
+        {
+
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Review review = dal.GetReviewById((int)id);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            return View(review);
+        }
+
+
+        // POST: Book/Delete/5
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            if (!isAdminUser())
+            {
+                return RedirectToAction("Index", "Main");
+            }
+
+            Review review = dal.GetReviewById((int)id);
+            dal.DeleteReview(review);
+            dal.SaveChanges();
+            return View("Details", dal.GetBookById(review.BookId));
         }
 
         public ActionResult Delete(int id)

@@ -50,9 +50,9 @@ namespace SmartBook.DAL
         }
         public Review GetReviewById(int reviewId)
         {
-            Review rev = db.Review.Where(m => m.ReviewId == reviewId).Join(db.Book, r => r.BookId, m => m.BookId, (r, m) => new Review { Book = m, BookId = m.BookId, ReviewId = r.ReviewId, ReviewDate = r.ReviewDate, ReviewRating = r.ReviewRating, ReviewText = r.ReviewText, UserName = r.UserName }).FirstOrDefault();
-            return rev;
-            //return db.Review.Where(m => m.ReviewId == reviewId).FirstOrDefault();
+            //Review rev = db.Review.Where(m => m.ReviewId == reviewId).Join(db.Book, r => r.BookId, m => m.BookId, (r, m) => new Review { Book = m, BookId = m.BookId, ReviewId = r.ReviewId, ReviewDate = r.ReviewDate, ReviewRating = r.ReviewRating, ReviewText = r.ReviewText, UserName = r.UserName }).FirstOrDefault();
+            //return rev;
+            return db.Review.Where(m => m.ReviewId == reviewId).FirstOrDefault();
         }
 
         public IQueryable<Review> GetAllReviews()
